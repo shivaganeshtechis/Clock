@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+    <title>Clock</title>
+</head>
+<body>
+    <div id="clock" class="clock"></div>
+    <script type="text/javascript">
+    function dynamicClock(){
+        var date = new Date();
+        var hours = date.getHours();
+        var minutes = date.getMinutes();
+        var seconds = date.getSeconds();
+        var session = "A.M.";
+
+        if(hours==0){
+            hours = 12; //12 hour format
+        }
+        if(hours>12){ //13-12 = 1
+            hours=hours-12;
+            session = "P.M."; //12 hour format
+        }
+        // if(hours<10){
+        //     hours="0"+hours;
+        // }
+        // if(minutes<10){
+        //     minutes="0"+minutes;
+        // }
+        // if(seconds<10){
+        //     seconds="0"+seconds;
+        // }
+        hours = (hours<10)?"0"+hours:hours;
+        minutes = (minutes<10)?"0"+minutes:minutes;
+        seconds = (seconds<10)?"0"+seconds:seconds;
+
+        document.getElementById("clock").innerHTML = hours + ":" + minutes + ":" + seconds +" "+ session;
+        setTimeout(dynamicClock, 1000)
+    }
+    dynamicClock();
+    </script>
+</body>
+</html>
